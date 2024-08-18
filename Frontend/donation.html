@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .donation-container {
+            display: flex;
+            max-width: 80%;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .image-container {
+            flex: 1;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .form-container {
+            flex: 1;
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 14px;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        .amount-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .amount-buttons button {
+            flex: 1;
+            padding: 10px;
+            background-color: #40c4ff;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .custom-amount {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .custom-amount input {
+            flex: 1;
+            padding: 10px;
+            margin: 0 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .next-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .powered-by {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #888;
+        }
+
+        .powered-by img {
+            height: 20px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="donation-container">
+        <div class="image-container">
+            <img src="https://solutions.volunteermatch.org/hubfs/iStock-1444142886.jpg" alt="Man and child fist-bumping in a library">
+        </div>
+        <div class="form-container">
+            <h2>CHOOSE A DONATION AMOUNT</h2>
+            <div class="amount-buttons">
+                <button>₹35</button>
+                <button>₹100</button>
+                <button>₹50</button>
+                <button>₹250</button>
+                <button>₹500</button>
+            </div>
+
+            <div class="custom-amount">
+                <span>₹</span>
+                <input type="number" placeholder="Other amount">
+                <span>INR</span>
+            </div>
+
+            <h2>IN HONOR OF</h2>
+            <input type="text" placeholder="In honor of">
+
+            <button class="next-button">Next</button>
+
+            <div class="powered-by">
+                POWERED BY <img src="donately-logo.png" alt="Donately">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

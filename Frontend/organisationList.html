@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizations List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .header h1 {
+            color: #d9534f;
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .header a {
+            color: #d9534f;
+            text-decoration: none;
+        }
+
+        .table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        .table th,
+        .table td {
+            padding: 12px 15px;
+            border: 1px solid #dee2e6;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #f1f1f1;
+        }
+
+        .dashboard-btn {
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            /* background-color: #d9534f; */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header-placeholder"></div>
+    <div class="container">
+        <div class="header">
+            <h1>Organizations</h1>
+            <a href="./OrganisationCreate.html" class="dashboard-btn">+ Add New Organization</a>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ORGANIZATION NAME</th>
+                    <th>CITY</th>
+                    <th>STATE</th>
+                    <th>Default Contact</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="org-list">
+                <!-- Data will be populated here by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    // Fetch data from backend API
+    fetch('http://127.0.0.1:8000/api/organizations/')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const tableBody = document.getElementById('org-list');
+            tableBody.innerHTML = ''; // Clear existing content
+
+            data.forEach(organization => {
+                // Create a new row for each organization
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><a href="organizationDetails.html?id=${organization.id}">${organization.organization_name || 'N/A'}</a></td>
+                    <td>${organization.city || 'N/A'}</td>
+                    <td>${organization.state || 'N/A'}</td>
+                    <td>${organization.phone || 'N/A'}</td>
+                    <td>
+                        <button class="delete-btn" data-id="${organization.id}">Delete</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+
+            // Attach event listeners to all delete buttons
+            document.querySelectorAll('.delete-btn').forEach(button => {
+                button.addEventListener('click', function () {
+                    const orgId = this.getAttribute('data-id');
+                    if (confirm('Are you sure you want to delete this organization?')) {
+                        deleteOrganization(orgId);
+                    }
+                });
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+});
+
+function deleteOrganization(id) {
+    fetch(`http://127.0.0.1:8000/api/organizations/${id}/`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        // Remove the row from the table
+        document.querySelector(`button[data-id="${id}"]`).closest('tr').remove();
+    })
+    .catch(error => {
+        console.error('Error deleting organization:', error);
+    });
+}
+
+    </script>
+    <script src="auth.js"></script>
+</body>
+
+</html>

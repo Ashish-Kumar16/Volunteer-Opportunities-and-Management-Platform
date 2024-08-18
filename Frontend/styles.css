@@ -1,0 +1,387 @@
+/* Base styles (applies to all screen sizes) */
+#search-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    min-height: 440px;
+    max-width: 1280px;
+    width: 100%;
+}
+
+.card {
+    padding: 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-image: url('image/child-volunteer-landscaping.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 440px;
+    min-width: 600px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.card h1 {
+    font-size: 48px;
+    margin-bottom: -10px;
+    color: #EEEBEA;
+    margin-top: 100px;
+}
+
+.card p {
+    font-size: 22px;
+    line-height: 1.36;
+    color: #EEEBEA;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 122px;
+}
+
+.search-input {
+    width: 396.6px;
+    height: 54.1px;
+    padding: 0px 0px 0px 15px;
+    border: 1px solid #ccc;
+    font-size: 18px;
+}
+
+.search-button {
+    background-color: #FF5533;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    width: 330px;
+    height: 54.1px;
+}
+
+.container-2 {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title {
+    background-color: #11bbee;
+    max-width: 1180px;
+    color: white;
+    margin-top: 45px;
+    height: 60px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    border-radius: 0 0 5px 5px;
+    line-height: 1.2;
+    margin-bottom: 75px;
+    padding: 15px;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.title h1 {
+    font-size: 36px;
+    font-weight: 100;
+}
+
+.content {
+    margin-top: 40px;
+}
+
+.content h2 {
+    font-size: 2.5rem;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.category {
+    text-align: center;
+    width: 90px;
+}
+
+.category .icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.category p {
+    font-size: 12px;
+    color: #444;
+    margin-bottom: 5px;
+}
+
+.category span {
+    font-size: 12px;
+    color: #777;
+}
+
+.volunteer-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap; /* Make it responsive */
+}
+
+.opportunity-section {
+    width: 45%;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px; /* Add margin for spacing on smaller screens */
+}
+
+.opportunity-section h2 {
+    font-size: 1.5em;
+    color: #00a1e0;
+    margin-bottom: 20px;
+}
+
+.opportunity-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.opportunity-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.opportunity-list li:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.opportunity-list li .number {
+    font-size: 1.2em;
+    color: #00a1e0;
+    background-color: #f1f1f1;
+    padding: 10px 15px;
+    margin-right: 15px;
+    border-radius: 4px;
+}
+
+.opportunity-list li .details {
+    flex: 1;
+}
+
+.opportunity-list li .details a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #333;
+}
+
+.opportunity-list li .details p {
+    margin: 0;
+    color: #888;
+}
+
+.see-all {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #ff6f61;
+    font-weight: bold;
+}
+
+/* container-3 */
+.container-3 {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-3 img:nth-child(1){
+    min-width: 1283px;
+}
+footer {
+    background-color: #f2f2f2;
+    padding: 40px 20px 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .footer-section {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .footer-section h3 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .footer-section ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 5px;
+  }
+  
+  .footer-section ul li a {
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .footer-section ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .social-icons a {
+    color: #666;
+    font-size: 20px;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    font-size: 12px;
+    color: #666;
+  }
+  
+  .footer-bottom a {
+    color: #666;
+    text-decoration: none;
+  }
+  
+  .help-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  /* You'll need to include Font Awesome or another icon library for the social media icons */
+/* Media Queries */
+
+/* Adjust styles for tablets */
+@media (max-width: 991px) {
+    /* Adjust grid for smaller screens */
+    .grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+    }
+    
+    .col1, .col2, .col3 {
+        grid-column: 1 / 2;
+        justify-content: center;
+    }
+
+    .volunteer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .opportunity-section {
+        width: 100%;
+    }
+
+    .impact-content {
+        flex-direction: column;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 160px);
+    }
+}
+
+/* Adjust styles for mobile devices */
+@media (max-width: 767px) {
+    header {
+        height: auto;
+        padding: 20px;
+    }
+
+    .navlist {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-container {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    .search-input, .search-button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .impact-content .text h2 {
+        font-size: 2rem;
+    }
+
+    .stat h3 {
+        font-size: 50px;
+    }
+
+    .stat p {
+        font-size: 1.2rem;
+    }
+
+    .card h1 {
+        font-size: 36px;
+    }
+
+    .card p {
+        font-size: 18px;
+    }
+}

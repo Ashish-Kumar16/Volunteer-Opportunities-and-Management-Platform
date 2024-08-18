@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selection Interface</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            display: flex;
+        }
+        .options {
+            width: 300px;
+            height: 300px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-right: 20px;
+        }
+        .option-item {
+            display: flex;
+            align-items: center;
+            padding: 5px 0;
+            cursor: pointer;
+        }
+        .option-item img {
+            width: 20px;
+            margin-right: 10px;
+        }
+        .option-item:hover {
+            color: red;
+        }
+        .selected-options {
+            border: 1px solid #ccc;
+            padding: 10px;
+            min-width: 200px;
+        }
+        .selected-options .selected-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5px 0;
+        }
+        .selected-options .selected-item img {
+            width: 20px;
+            margin-right: 10px;
+        }
+        .selected-options .selected-item span {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="options">
+            <div class="option-item" onclick="selectOption('Advocacy & Human Rights')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> Advocacy & Human Rights
+            </div>
+            <div class="option-item" onclick="selectOption('Animals')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> Animals
+            </div>
+            <div class="option-item" onclick="selectOption('Arts & Culture')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> Arts & Culture
+            </div>
+            <div class="option-item" onclick="selectOption('Board Development')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> Board Development
+            </div>
+            <div class="option-item" onclick="selectOption('Children & Youth')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> Children & Youth
+            </div>
+            <div class="option-item" onclick="selectOption('Community')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> Community
+            </div>
+            <div class="option-item" onclick="selectOption('Computers & Technology')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> Computers & Technology
+            </div>
+            <div class="option-item" onclick="selectOption('Crisis Support')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> Crisis Support
+            </div>
+            <div class="option-item" onclick="selectOption('Disaster Relief')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> Disaster Relief
+            </div>
+            <div class="option-item" onclick="selectOption('Education & Literacy')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> Education & Literacy
+            </div>
+            <div class="option-item" onclick="selectOption('Emergency & Safety')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> Emergency & Safety
+            </div>
+            <div class="option-item" onclick="selectOption('Employment')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> Employment
+            </div>
+            <div class="option-item" onclick="selectOption('Environment')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> Environment
+            </div>
+            <div class="option-item" onclick="selectOption('Faith-Based')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> Faith-Based
+            </div>
+            <div class="option-item" onclick="selectOption('Health & Medicine')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> Health & Medicine
+            </div>
+            <div class="option-item" onclick="selectOption('Homeless & Housing')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> Homeless & Housing
+            </div>
+            <div class="option-item" onclick="selectOption('Hunger')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> Hunger
+            </div>
+            <div class="option-item" onclick="selectOption('Immigrants & Refugees')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> Immigrants & Refugees
+            </div>
+            <div class="option-item" onclick="selectOption('International')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> International
+            </div>
+            <div class="option-item" onclick="selectOption('Justice & Legal')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> Justice & Legal
+            </div>
+            <div class="option-item" onclick="selectOption('LGBTQ+')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> LGBTQ+
+            </div>
+            <div class="option-item" onclick="selectOption('Media & Broadcasting')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> Media & Broadcasting
+            </div>
+            <div class="option-item" onclick="selectOption('People with Disabilities')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> People with Disabilities
+            </div>
+            <div class="option-item" onclick="selectOption('Politics')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> Politics
+            </div>
+            <div class="option-item" onclick="selectOption('Race & Ethnicity')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> Race & Ethnicity
+            </div>
+            <div class="option-item" onclick="selectOption('Seniors')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> Seniors
+            </div>
+            <div class="option-item" onclick="selectOption('Sports & Recreation')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> Sports & Recreation
+            </div>
+            <div class="option-item" onclick="selectOption('Veterans & Military Families')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> Veterans & Military Families
+            </div>
+            <div class="option-item" onclick="selectOption('Women')">
+                <img src="https://via.placeholder.com/20" alt="Icon"> Women
+            </div>
+        </div>
+        <div class="selected-options" id="selected-options">
+            <p>Your Selections (Choose up to 5):</p>
+        </div>
+    </div>
+
+    <script>
+        const selectedOptions = document.getElementById('selected-options');
+        let selectedItems = [];
+
+        function selectOption(option) {
+            if (selectedItems.length < 5 && !selectedItems.includes(option)) {
+                selectedItems.push(option);
+                renderSelectedOptions();
+            }
+        }
+
+        function removeOption(option) {
+            selectedItems = selectedItems.filter(item => item !== option);
+            renderSelectedOptions();
+        }
+
+        function renderSelectedOptions() {
+            selectedOptions.innerHTML = '<p>Your Selections (Choose up to 5):</p>';
+            selectedItems.forEach(item => {
+                const selectedItem = document.createElement('div');
+                selectedItem.className = 'selected-item';
+                selectedItem.innerHTML = `<img src="https://via.placeholder.com/20" alt="Icon"> ${item} <span onclick="removeOption('${item}')">x</span>`;
+                selectedOptions.appendChild(selectedItem);
+            });
+        }
+    </script>
+</body>
+</html>

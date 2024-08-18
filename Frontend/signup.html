@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+  font-family: Arial, sans-serif;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-popup {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  width: 600px;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.logo {
+  display: block;
+  width: 80px;
+  margin: 0 auto 20px;
+}
+
+.login-link {
+  color: #ff5722;
+  text-decoration: none;
+}
+
+form {
+  margin-top: 20px;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.password-container {
+  position: relative;
+}
+
+.show-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  cursor: pointer;
+}
+
+.password-hint {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.checkbox-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.back-link {
+  color: #ff5722;
+  text-decoration: none;
+}
+
+.recaptcha-placeholder {
+  width: 200px;
+  height: 60px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  color: #666;
+}
+
+.signup-btn {
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+</style> 
+</head>
+<body>
+  <div class="overlay">
+      <div class="signup-popup">
+          <div class="close-btn">
+              <a href="./index.html" aria-label="Close">×</a>
+          </div>
+          <img src="https://blogs.volunteermatch.org/hs-fs/hubfs/VM%20logo%20color%20-%20black%20text%20no%20tagline%20-%20transparent.png?width=948&height=209&name=VM%20logo%20color%20-%20black%20text%20no%20tagline%20-%20transparent.png" alt="VolunteerMatch Logo" class="logo">
+          <p>Already have an account? <a href="./login.html" class="login-link">Log in</a></p>
+          
+          <form id="signupForm">
+              <input type="text" id="firstName" placeholder="First Name" required>
+              <input type="text" id="lastName" placeholder="Last Name" required>
+              <select id="country" required>
+                  <option value="US">United States</option>
+                  <option value="CA">Canada</option> 
+                  <!-- Add more country options here -->
+              </select>
+              <input type="text" id="zipCode" placeholder="ZIP Code" required>
+              <input type="email" id="email" placeholder="Email Address" required>
+              <input type="password" id="password" placeholder="Password" required>
+              <button type="submit">Sign Up</button>
+          </form>
+
+      </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const country = document.getElementById('country').value;
+            const zipCode = document.getElementById('zipCode').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const data = {
+                first_name: firstName,
+                last_name: lastName,
+                country: country,
+                zip_code: zipCode,
+                email: email,
+                password: password
+            };
+
+            fetch('http://127.0.0.1:8000/auth/register/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.detail === "User created successfully.") {
+                    // Store tokens in localStorage
+                    localStorage.setItem('access_token', data.access_token);
+                    localStorage.setItem('refresh_token', data.refresh_token);
+
+                    // Redirect to the homepage
+                    window.location.href = './index.html';
+                } else {
+                    alert("Sign-up failed: " + JSON.stringify(data));
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        });
+    });
+</script>
+
+</body>
+</html> 
+
+ 

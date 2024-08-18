@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organization Card</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            margin: 0;
+            padding: 20px;
+        }
+        .card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+        .left-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .left-section img {
+            width: 200px;
+            border-radius: 8px;
+        }
+        .donate-btn {
+            background-color: #ff5638;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 10px;
+            display: inline-block;
+            text-align: center;
+        }
+        .right-section {
+            flex: 1;
+            margin-left: 20px;
+        }
+        .right-section h2 {
+            color: #e94b35;
+            font-size: 28px;
+            margin: 0;
+        }
+        .right-section p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #555;
+        }
+        .location {
+            color: #555;
+            margin-top: 10px;
+        }
+        .review-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-left: 20px;
+        }
+        .review-section .rating {
+            color: #e94b35;
+            font-size: 24px;
+        }
+        .review-section .review-text {
+            color: #e94b35;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 40px;
+            border-radius: 8px;
+        }
+        .header {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 {
+            font-size: 24px;
+            margin: 0;
+            font-weight: normal;
+        }
+        .social-icons a {
+            margin-left: 10px;
+            color: #666;
+            text-decoration: none;
+        }
+        .section-title {
+            font-size: 20px;
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <div class="card">
+        <div class="left-section">
+            <img id="org-image" src="" alt="Organization Logo">
+            <a href="#" class="donate-btn">DONATE TO THIS ORGANIZATION</a>
+        </div>
+        <div class="right-section" id="org-details">
+            <!-- Organization details will be populated here by JavaScript -->
+        </div>
+        <div class="review-section">
+            <div class="rating">★★★★★</div>
+            <div class="review-text">Be the first to write a review</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Organization Information</h1>
+            <div class="social-icons">
+                <a id="facebook-link" href="#"><img src="https://cdn.iconscout.com/icon/free/png-512/free-facebook-logo-icon-download-in-svg-png-gif-file-formats--fb-social-media-pack-logos-icons-1466168.png?f=webp&w=256" width="20px" alt="Facebook"></a>
+                <a id="twitter-link" href="#"><img src="https://cdn.iconscout.com/icon/free/png-512/free-x-icon-download-in-svg-png-gif-file-formats--twitter-logo-branding-social-network-pack-seo-web-icons-7941131.png?f=webp&w=256" width="20px" alt="Twitter"></a>
+                <a id="linkedin-link" href="#"><img src="https://cdn.iconscout.com/icon/free/png-512/free-linkedin-logo-icon-download-in-svg-png-gif-file-formats--social-media-brand-logos-pack-icons-1239440.png?f=webp&w=256" width="20px" alt="LinkedIn"></a>
+            </div>
+        </div>
+
+        <div class="section-title">Mission Statement</div>
+        <div class="content" id="mission-statement">
+            <!-- Mission Statement content goes here -->
+        </div>
+
+        <div class="section-title">Description</div>
+        <div class="content" id="org-description">
+            <!-- Description content goes here -->
+        </div>
+
+        <div class="content">
+            <!-- Additional content sections go here -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('id');
+
+            if (id) {
+                fetch(`http://127.0.0.1:8000/api/organizations/${id}/`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        const detailsDiv = document.getElementById('org-details');
+                        const orgImage = document.getElementById('org-image');
+                        const facebookLink = document.getElementById('facebook-link');
+                        const twitterLink = document.getElementById('twitter-link');
+                        const linkedinLink = document.getElementById('linkedin-link');
+                        
+                        // Populate organization image and details
+                        orgImage.src = data.organization_photo || '#'
+                        orgImage.alt = `${data.organization_name || 'Organization'} Logo`;
+                        
+                        detailsDiv.innerHTML = `
+                        <h2>${data.organization_name || 'N/A'}</h2>
+                        <p class="location"><strong>Address:</strong> ${data.address_line_1 || ''} ${data.city || ''}, ${data.zip_code || ''}, ${data.country || ''}</p>
+                        <p><strong>Phone:</strong> ${data.phone || 'N/A'}</p>
+                        <p><strong>Website:</strong> <a href="${data.website || '#'}">${data.website || 'N/A'}</a></p>
+                        `;
+                        
+                        // Update social media links
+                        facebookLink.href = data.facebook_url || '#';
+                        twitterLink.href = data.twitter_url || '#';
+                        linkedinLink.href = data.linkedin_url || '#';
+
+                        // Populate mission statement and description
+                        document.getElementById('mission-statement').textContent = data.mission_satement || 'No mission statement available.';
+                        document.getElementById('org-description').textContent = data.organization_description || 'No description available.';
+                    })
+                    .catch(error => {
+                        console.error('Error fetching details:', error);
+                    });
+            } else {
+                console.error('No ID provided in URL');
+            }
+        });
+    </script>
+    <script src="auth.js"></script>
+</body>
+</html>

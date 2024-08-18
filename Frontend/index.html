@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="header-placeholder"></div>
+    <div id="search-container">
+        <div class="container">
+            <div class="card">
+                <h1>Remarkable Outcomes</h1>
+                <p>VolunteerMatch matches inspired people with inspiring causes. It's how volunteers and nonprofits connect to achieve remarkable outcomes.</p>
+                <div class="search-container">
+                    <input type="text" class="search-input" id="search-input" placeholder="Search City or Zip Code">
+                    <button class="search-button" id="search-button">Find Opportunities</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="container-2">
+        <header class="title">
+            <h1>VolunteerMatch India</h1>
+        </header>
+
+        <div class="content">
+            <h2>Find The Best Volunteer Opportunities Near India</h2>
+        </div>
+        <div class="volunteer-container">
+            <div class="opportunity-section">
+                <h2>New Volunteer Opportunities Near India</h2>
+                <ul id="new-volunteer-opportunities" class="opportunity-list">
+                    <!-- Items will be dynamically inserted here -->
+                </ul>
+                <a href="./opportunityList.html" class="see-all">See All</a>
+            </div>
+    
+            <div class="opportunity-section">
+                <h2>Upcoming Volunteer Opportunities Near India</h2>
+                <ul id="upcoming-volunteer-opportunities" class="opportunity-list">
+                    <!-- Items will be dynamically inserted here -->
+                </ul>
+                <a href="#" class="see-all">See All</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-3">
+        <div class="impact-content">
+            <img src="./image/image-1.png" alt="">
+            <img src="./image/image-2.png" alt="">
+            <img src="./image/image-3.png" alt="">
+        </div>
+        
+    </div>
+
+    <div class="container1">
+
+    <!-- footer -->
+    <footer>
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Cities</h3>
+            <ul>
+              <li><a href="#">Atlanta</a></li>
+              <li><a href="#">Austin</a></li>
+              <li><a href="#">Boston</a></li>
+              <li><a href="#">Chicago</a></li>
+              <li><a href="#">Denver</a></li>
+              <li><a href="#">Las Vegas</a></li>
+              <li><a href="#">Los Angeles</a></li>
+              <li><a href="#">Miami</a></li>
+              <li><a href="#">Milwaukee</a></li>
+              <li><a href="#">New York</a></li>
+              <li><a href="#">Phoenix</a></li>
+              <li><a href="#">San Diego</a></li>
+              <li><a href="#">San Francisco</a></li>
+              <li><a href="#">More Cities</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h3>Top Causes</h3>
+            <ul>
+              <li><a href="#">Community</a></li>
+              <li><a href="#">Children & Youth</a></li>
+              <li><a href="#">Seniors</a></li>
+              <li><a href="#">Health & Medicine</a></li>
+              <li><a href="#">Education & Literacy</a></li>
+              <li><a href="#">Advocacy & Human Rights</a></li>
+              <li><a href="#">People with Disabilities</a></li>
+              <li><a href="#">Arts & Culture</a></li>
+              <li><a href="#">Animals</a></li>
+              <li><a href="#">Environment</a></li>
+              <li><a href="#">Hunger</a></li>
+              <li><a href="#">Veterans & Military Families</a></li>
+              <li><a href="#">Women</a></li>
+              <li><a href="#">Homeless & Housing</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h3>Company</h3>
+            <ul>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Team</a></li>
+              <li><a href="#">Press</a></li>
+              <li><a href="#">Technology Partners</a></li>
+              <li><a href="#">Live Map</a></li>
+            </ul>
+            
+            <h3>Business Solutions</h3>
+            <ul>
+              <li><a href="#">Business Solutions</a></li>
+              <li><a href="#">Blog - Volunteering is CSR</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h3>Resources</h3>
+            <ul>
+              <li><a href="#">Help</a></li>
+              <li><a href="#">Nonprofit Learning Center</a></li>
+              <li><a href="#">Webinars</a></li>
+              <li><a href="#">Blog - Engaging Volunteers</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+            
+            <h3>Follow Us!</h3>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p>© 1998-2024 VolunteerMatch, A 501(c)(3) Organization. EIN: 77-0395654. All Rights Reserved. <a href="#">Privacy Policy</a> / <a href="#">Terms of Use</a></p>
+        </div>
+      </footer>
+      
+      <button class="help-button">Help</button>
+    
+    
+    <script>
+        document.getElementById('search-button').addEventListener('click', () => {
+            const searchQuery = encodeURIComponent(document.getElementById('search-input').value.trim());
+            if (searchQuery) {
+                window.location.href = `./opportunityList.html?search=${searchQuery}`;
+            }
+        });
+        document.addEventListener('DOMContentLoaded', async () => {
+        const apiUrl = 'http://127.0.0.1:8000/api/opportunities/';
+        const newOpportunitiesList = document.getElementById('new-volunteer-opportunities');
+
+        try {
+            const response = await fetch(apiUrl);
+            if (!response.ok) throw new Error('Network response was not ok');
+            const data = await response.json();
+            
+            console.log(data); // Log the data to check its structure
+
+            // Assuming the API returns an array of opportunities directly
+            const opportunities = data.results || data; // Adjust based on actual structure
+            if (!Array.isArray(opportunities)) {
+                throw new Error('Unexpected data structure');
+            }
+
+            const recentOpportunities = opportunities.slice(0, 4); // Get the first 4 recent opportunities
+
+            newOpportunitiesList.innerHTML = ''; // Clear existing content
+
+            recentOpportunities.forEach((opportunity, index) => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <div class="number">${index + 1}</div>
+                    <div class="details">
+                        <p>${opportunity.title} with <br>${opportunity.organizations}</p>
+                    </div>
+                `;
+                newOpportunitiesList.appendChild(listItem);
+            });
+        } catch (error) {
+            console.error('Error fetching recent opportunities:', error);
+        }
+    });
+    
+
+    </script>
+    <script>
+        // Function to update the header based on login status
+        function updateHeader() {
+            const isLoggedIn = localStorage.getItem('access_token') !== null;
+            const navList = document.getElementById('nav-list');
+
+            if (isLoggedIn) {
+                navList.innerHTML += `
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="#" id="logout">Logout</a></li>
+                `;
+            } else {
+                navList.innerHTML += `
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="signup.html">Sign Up</a></li>
+                `;
+            }
+
+            // Add logout functionality
+            document.getElementById('logout')?.addEventListener('click', () => {
+                localStorage.removeItem('access_token');
+                localStorage.removeItem('refresh_token');
+                window.location.href = 'index.html';
+            });
+        }
+
+        // Load header.html and insert it into the placeholder
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                updateHeader();
+            })
+            .catch(error => console.error('Error loading header:', error));
+    </script>
+    <script src="auth.js"></script>
+
+</body>
+</html>

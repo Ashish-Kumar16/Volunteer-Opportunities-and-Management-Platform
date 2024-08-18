@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Opportunity</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .content {
+            flex: 3;
+            margin-right: 20px;
+        }
+
+        .content h1 {
+            font-size: 24px;
+            color: #E74C3C;
+            margin-bottom: 10px;
+        }
+
+        .organization {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .organization span {
+            color: #E74C3C;
+        }
+
+        .social-media {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .social-media .icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-media img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .help-button {
+            background-color: #FF5A5F;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .interested {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .org-logo {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .content h2 {
+            font-size: 18px;
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        .content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .content ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar {
+            flex: 1;
+        }
+
+        .sidebar-item {
+            margin-bottom: 20px;
+        }
+
+        .sidebar-item h3 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .sidebar-item p {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+        }
+
+        .sidebar-item img {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .report-link {
+            display: block;
+            text-align: right;
+            font-size: 14px;
+            color: #FF5A5F;
+            text-decoration: none;
+        }
+
+        .report-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+    <div class="container">
+        
+        <div class="content">
+            <h1 id="title">Volunteer Accountant For Theatre In Education</h1>
+            <p class="organization">Organization: <span id="organization">Theatre In Education</span></p>
+            <div class="social-media">
+                <div class="icons">
+                    <a id="facebook-link" href="#"><img src="https://cdn.iconscout.com/icon/free/png-512/free-facebook-logo-icon-download-in-svg-png-gif-file-formats--fb-social-media-pack-logos-icons-1466168.png?f=webp&w=256" alt="Facebook"></a>
+                    <a id="twitter-link" href="#"><img src="https://cdn.iconscout.com/icon/free/png-512/free-x-icon-download-in-svg-png-gif-file-formats--twitter-logo-branding-social-network-pack-seo-web-icons-7941131.png?f=webp&w=256" alt="Twitter"></a>
+                    <a id="linkedin-link" href="#"><img src="https://cdn.iconscout.com/icon/free/png-512/free-linkedin-logo-icon-download-in-svg-png-gif-file-formats--social-media-brand-logos-pack-icons-1239440.png?f=webp&w=256" alt="LinkedIn"></a>
+                    <a id="email-link" href="#"><img src="https://cdn.iconscout.com/icon/free/png-512/free-email-icon-download-in-svg-png-gif-file-formats--geomicons-pack-user-interface-icons-431258.png?f=webp&w=256" alt="Email"></a>
+                </div>
+                <button id="help-button" class="help-button">I Want to Help</button>
+            </div>
+            <p id="interested" class="interested">1 person is interested</p>
+            <img id="org-logo" src="https://res.cloudinary.com/dktp1ybbx/image/upload/c_limit,h_180,w_180/f_auto,fl_lossy,q_auto/v1720198553/organization/prod/1214322/4TjBDGroGR.jpg" alt="Organization Logo" class="org-logo">
+            <p id="description"></p>
+            <!-- <h2>Description:</h2>
+            <ul id="role-description">
+                 List items will be populated by JavaScript -->
+            </ul> 
+            <!-- <h2>Qualifications and Skills:</h2> -->
+            <ul id="qualifications">
+                <!-- List items will be populated by JavaScript -->
+            </ul>
+        </div>
+        <div class="sidebar">
+            <div class="sidebar-item">
+                <h3>Cause Areas</h3>
+                <p id="cause-areas">Arts & Culture</p>
+            </div>
+            <div class="sidebar-item">
+                <h3>When</h3>
+                <p id="when">We'll work with your schedule.</p>
+            </div>
+            <div class="sidebar-item">
+                <h3>Where</h3>
+                <p id="where"></p>
+                <!-- <img id="map" src="map.png" alt="Map"> -->
+            </div>
+            
+            <div class="sidebar-item">
+                <h3>Date Posted</h3>
+                <p id="date-posted">August 14, 2024</p>
+            </div>
+            <div class="sidebar-item">
+                <h3>Skills</h3>
+                <p id="skills">Financial Auditing, Accounting</p>
+            </div>
+            <div class="sidebar-item">
+                <h3>REQUIREMENTS</h3>
+                <p id="reqirements">Financial Auditing, Accounting</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Define the API URL
+            const apiUrl = 'http://127.0.0.1:8000/api/opportunity/1/'; // Replace '3' with the appropriate opportunity ID
+        
+            // Fetch data from the API
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    // Update HTML elements with data from the API
+                    document.getElementById('title').textContent = data.title;
+                    document.getElementById('organization').textContent = data.organization_name;
+                    document.getElementById('description').textContent = data.description;
+                    document.getElementById('interested').textContent = `${data.interested_count || 0} person${data.interested_count > 1 ? 's' : ''} is interested`;
+        
+                    // Update social media links
+                    document.getElementById('facebook-link').href = data.facebook_url || '#';
+                    document.getElementById('twitter-link').href = data.twitter_url || '#';
+                    document.getElementById('linkedin-link').href = data.linkedin_url || '#';
+                    document.getElementById('email-link').href = `mailto:${data.email || ''}`;
+        
+                    // Update role descriptions
+                    // const roleDescriptionList = document.getElementById('role-description');
+                    // roleDescriptionList.innerHTML = '';
+                    // if (Array.isArray(data.description)) {
+                    //     data.role_description.forEach(role => {
+                    //         const li = document.createElement('li');
+                    //         li.textContent = role;
+                    //         roleDescriptionList.appendChild(li);
+                    //     });
+                    // } else {
+                    //     roleDescriptionList.textContent = 'No role descriptions available.';
+                    // }
+        
+                    // Update qualifications
+                    // const qualificationsList = document.getElementById('qualifications');
+                    // qualificationsList.innerHTML = '';
+                    // if (Array.isArray(data.qualifications)) {
+                    //     data.qualifications.forEach(qualification => {
+                    //         const li = document.createElement('li');
+                    //         li.textContent = qualification;
+                    //         qualificationsList.appendChild(li);
+                    //     });
+                    // } else {
+                    //     qualificationsList.textContent = 'No qualifications available.';
+                    // }
+        
+                    // Update other fields
+                    document.getElementById('cause-areas').textContent = data.cause_areas || 'Not specified';
+                    document.getElementById('when').textContent = data.when || 'No schedule specified';
+        
+                    // Handle the 'where' section based on is_remote
+                    const whereElement = document.getElementById('where');
+                    if (data.is_remote) {
+                        whereElement.textContent = 'This is a Virtual Opportunity with no fixed address.';
+                    } else {
+                        whereElement.innerHTML = `${data.city ? data.city + ', ' : ''}${data.country ? data.country + ', ' : ''}${data.zip_code ? data.zip_code : ''}`;
+                    }
+        
+                    // Update date posted and skills
+                    document.getElementById('date-posted').textContent = new Date(data.start_date).toLocaleDateString() || 'Date not available';
+                    document.getElementById('skills').textContent = data.skills || 'No skills specified';
+                    document.getElementById('requirement').textContent = data.requirement || 'No REQUIREMENTS specified';
+        
+                    // Update organization logo if provided
+                    document.getElementById('org-logo').src = data.logo_url || 'default-logo.png';
+                })
+                .catch(error => {
+                    console.error('Error fetching the data:', error);
+                });
+        });
+    </script>
+    <script src="auth.js"></script>
+</body>
+</html>
